@@ -143,25 +143,31 @@ async function submitPatient() {
 
 <style scoped>
 .popup-box {
-  width: 462px;
-  max-width: 92vw;
-  min-height: 520px;
+  width: min(462px, 92vw);
+  min-height: clamp(380px, 56dvh, 1180px);
+  max-height: 90dvh;
+  overflow-y: auto;
   background-color: #ffffff;
   border: 1.5px solid #000000;
-  border-radius: 22px;
+  border-radius: clamp(22px, 2vmin, 48px);
   box-sizing: border-box;
-  padding: 36px 26px 32px 26px;
+  padding: clamp(32px, 3.2vmin, 76px) clamp(24px, 2.4vmin, 58px) clamp(28px, 2.8vmin, 66px);
   position: relative;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
 }
 
 .popup-close-btn {
   position: absolute;
-  top: 10px;
-  right: 16px;
+  top: clamp(8px, 0.9vmin, 22px);
+  right: clamp(12px, 1.2vmin, 28px);
+  min-width: clamp(36px, 3.4vmin, 80px);
+  min-height: clamp(36px, 3.4vmin, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: clamp(18px, 1.7vmin, 42px);
   font-weight: 400;
   color: #333333;
   cursor: pointer;
@@ -171,32 +177,32 @@ async function submitPatient() {
 
 .popup-title {
   text-align: center;
-  font-size: 20px;
+  font-size: clamp(20px, 1.9vmin, 46px);
   font-weight: 700;
   color: #000000;
   letter-spacing: 0.3px;
-  margin-bottom: 46px;
+  margin-bottom: clamp(24px, 4.2vmin, 100px);
 }
 
 .popup-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: clamp(12px, 1.2vmin, 28px);
 }
 
 .rm-readonly-box {
   width: 100%;
-  height: 30px;
+  height: clamp(30px, 2.9vmin, 70px);
   background-color: #d9d9d9;
-  border-radius: 5px;
+  border-radius: clamp(5px, 0.5vmin, 12px);
   display: flex;
   align-items: center;
-  padding: 0 11px;
+  padding: 0 clamp(11px, 1.1vmin, 26px);
   box-sizing: border-box;
 }
 
 .rm-readonly-text {
-  font-size: 12px;
+  font-size: clamp(12px, 1.15vmin, 28px);
   color: #574454;
   text-decoration: underline;
 }
@@ -204,18 +210,18 @@ async function submitPatient() {
 .popup-row-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: clamp(14px, 1.3vmin, 32px);
   width: 100%;
 }
 
 .popup-input-white {
   width: 100%;
-  height: 29px;
+  height: clamp(29px, 2.8vmin, 68px);
   background-color: #ffffff;
   border: 1.5px solid #000000;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 12px;
+  border-radius: clamp(5px, 0.5vmin, 12px);
+  padding: 0 clamp(10px, 1vmin, 24px);
+  font-size: clamp(12px, 1.15vmin, 28px);
   color: #000000;
   box-sizing: border-box;
   outline: none;
@@ -227,12 +233,12 @@ async function submitPatient() {
 
 .popup-textarea-white {
   width: 100%;
-  height: 84px;
+  height: clamp(84px, 8vmin, 195px);
   background-color: #ffffff;
   border: 1.5px solid #000000;
-  border-radius: 5px;
-  padding: 7px 10px;
-  font-size: 12px;
+  border-radius: clamp(5px, 0.5vmin, 12px);
+  padding: clamp(7px, 0.7vmin, 18px) clamp(10px, 1vmin, 24px);
+  font-size: clamp(12px, 1.15vmin, 28px);
   color: #000000;
   box-sizing: border-box;
   resize: none;
@@ -245,17 +251,17 @@ async function submitPatient() {
 }
 
 .popup-submit-wrap {
-  margin-top: 28px;
+  margin-top: clamp(24px, 2.6vmin, 64px);
 }
 
 .btn-popup-primary {
-  width: 182px;
-  height: 31px;
+  width: clamp(182px, 17vmin, 420px);
+  height: clamp(31px, 3vmin, 74px);
   background-color: #0461cd;
   color: #ffffff;
   border: none;
-  border-radius: 7px;
-  font-size: 11px;
+  border-radius: clamp(7px, 0.7vmin, 16px);
+  font-size: clamp(11px, 1.1vmin, 26px);
   font-weight: 500;
   letter-spacing: 0.3px;
   cursor: pointer;
@@ -265,6 +271,13 @@ async function submitPatient() {
   transition: opacity 0.2s;
 }
 
+@media (min-width: 1400px) {
+  .popup-box {
+    width: 38vw;
+    max-width: none;
+  }
+}
+
 .btn-popup-primary:hover {
   opacity: 0.92;
 }
@@ -272,5 +285,49 @@ async function submitPatient() {
 .btn-popup-primary:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .popup-box {
+    width: 94vw;
+    min-height: auto;
+    border-radius: 18px;
+    padding: 28px 18px 24px 18px;
+  }
+
+  .popup-title {
+    font-size: 18px;
+    margin-bottom: 22px;
+  }
+
+  .popup-row-2col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .rm-readonly-box,
+  .popup-input-white {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .rm-readonly-text {
+    font-size: 13px;
+  }
+
+  .popup-textarea-white {
+    height: 90px;
+    font-size: 14px;
+  }
+
+  .popup-submit-wrap {
+    margin-top: 20px;
+  }
+
+  .btn-popup-primary {
+    width: 100%;
+    height: 42px;
+    font-size: 13px;
+  }
 }
 </style>

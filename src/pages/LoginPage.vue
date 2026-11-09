@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen sintasi-bg flex flex-center q-pa-md">
+  <div class="sintasi-page sintasi-bg flex flex-center">
     <div class="ui1-modal-card flex column items-center">
       <div class="ui1-logo-container">
         <img
@@ -102,50 +102,54 @@ async function handleLogin() {
 </script>
 
 <style scoped>
-.sintasi-bg {
+.sintasi-page {
   background-color: #0461cd;
   min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  padding: clamp(16px, 4vw, 32px);
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .ui1-modal-card {
-  width: 550px;
-  max-width: 94vw;
-  min-height: 360px;
+  width: min(550px, 94vw);
+  min-height: clamp(350px, 38dvh, 960px);
   background-color: #ffffff;
-  border-radius: 22px;
+  border-radius: clamp(22px, 2vmin, 48px);
   box-sizing: border-box;
-  padding: 26px 32px 34px 32px;
+  padding: clamp(26px, 3vmin, 72px) clamp(28px, 3.4vmin, 84px) clamp(32px, 3.6vmin, 88px);
+  justify-content: center;
 }
 
 .ui1-logo-container {
-  height: 76px;
+  height: clamp(72px, 7vmin, 190px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 34px;
+  margin-bottom: clamp(28px, 3.2vmin, 80px);
 }
 
 .ui1-logo {
-  max-width: 210px;
-  max-height: 68px;
+  max-width: clamp(205px, 19vmin, 520px);
+  max-height: clamp(66px, 6.4vmin, 175px);
   object-fit: contain;
 }
 
 .ui1-form {
   width: 100%;
-  gap: 18px;
+  gap: clamp(16px, 1.8vmin, 44px);
 }
 
 .ui1-input {
-  width: 492px;
-  max-width: 100%;
-  height: 48px;
+  width: 100%;
+  height: clamp(46px, 4.6vmin, 114px);
   background-color: #d9d9d9;
-  border-radius: 24px;
+  border-radius: 999px;
   border: none;
   box-sizing: border-box;
-  padding: 0 28px;
-  font-size: 16px;
+  padding: 0 clamp(24px, 2.5vmin, 64px);
+  font-size: clamp(16px, 1.5vmin, 38px);
   color: #574454;
   outline: none;
 }
@@ -160,14 +164,13 @@ async function handleLogin() {
 }
 
 .ui1-btn-login {
-  width: 376px;
-  max-width: 85%;
-  height: 48px;
+  width: 76%;
+  height: clamp(46px, 4.6vmin, 114px);
   background-color: #0461cd;
   color: #ffffff;
   border: none;
-  border-radius: 24px;
-  font-size: 16px;
+  border-radius: 999px;
+  font-size: clamp(16px, 1.5vmin, 38px);
   font-weight: 500;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -182,5 +185,64 @@ async function handleLogin() {
 .ui1-btn-login:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+@media (min-width: 1400px) {
+  .ui1-modal-card {
+    width: 44vw;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ui1-modal-card {
+    max-width: 480px;
+    min-height: 330px;
+    padding: 24px 24px 30px 24px;
+  }
+
+  .ui1-logo-container {
+    height: 64px;
+    margin-bottom: 24px;
+  }
+
+  .ui1-logo {
+    max-width: 185px;
+    max-height: 58px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ui1-modal-card {
+    min-height: auto;
+    border-radius: 18px;
+    padding: 22px 18px 26px 18px;
+  }
+
+  .ui1-logo-container {
+    height: 56px;
+    margin-bottom: 20px;
+  }
+
+  .ui1-logo {
+    max-width: 165px;
+    max-height: 52px;
+  }
+
+  .ui1-form {
+    gap: 14px;
+  }
+
+  .ui1-input {
+    height: 46px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  .ui1-btn-login {
+    width: 100%;
+    max-width: 100%;
+    height: 46px;
+  }
 }
 </style>

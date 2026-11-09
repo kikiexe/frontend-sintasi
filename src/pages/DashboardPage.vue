@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen sintasi-bg flex flex-center q-pa-md">
+  <div class="sintasi-page sintasi-bg flex flex-center">
     <div class="ui2-modal-card flex column">
       <div class="ui2-header">
         <div class="ui2-logo-container flex flex-center">
@@ -106,16 +106,19 @@ async function handleLogout() {
 </script>
 
 <style scoped>
-.sintasi-bg {
+.sintasi-page {
   background-color: #0461cd;
   min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  padding: clamp(12px, 3vw, 24px);
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .ui2-modal-card {
-  width: 850px;
-  max-width: 96vw;
-  height: 820px;
-  max-height: 92vh;
+  width: min(850px, 94vw);
+  height: clamp(580px, 86dvh, 820px);
   background-color: #ffffff;
   border-radius: 22px;
   box-sizing: border-box;
@@ -127,29 +130,30 @@ async function handleLogout() {
 .ui2-header {
   position: relative;
   padding: 0 24px;
-  margin-bottom: 68px;
+  margin-bottom: clamp(28px, 5.5vh, 68px);
 }
 
 .ui2-logo-container {
-  height: 68px;
+  height: clamp(64px, 6.2vmin, 180px);
 }
 
 .ui2-logo {
-  max-width: 205px;
-  max-height: 68px;
+  max-width: clamp(200px, 18vmin, 520px);
+  max-height: clamp(64px, 6.2vmin, 180px);
   object-fit: contain;
 }
 
 .ui2-logout-btn {
   position: absolute;
-  right: 24px;
-  top: 6px;
+  right: clamp(20px, 2vmin, 56px);
+  top: clamp(6px, 0.6vmin, 18px);
   background: transparent;
   border: 1px solid #d9d9d9;
-  border-radius: 8px;
-  font-size: 12px;
+  border-radius: clamp(8px, 0.7vmin, 18px);
+  font-size: clamp(12px, 1.1vmin, 28px);
   color: #574454;
-  padding: 5px 12px;
+  min-height: clamp(34px, 3.2vmin, 80px);
+  padding: clamp(5px, 0.5vmin, 14px) clamp(12px, 1.2vmin, 32px);
   cursor: pointer;
 }
 
@@ -158,22 +162,23 @@ async function handleLogout() {
 }
 
 .ui2-actions-row {
-  padding: 0 16px;
-  gap: 6px;
-  margin-bottom: 18px;
+  padding: 0 clamp(16px, 1.5vmin, 42px);
+  gap: clamp(8px, 0.8vmin, 22px);
+  margin-bottom: clamp(16px, 1.8vmin, 42px);
+  flex-wrap: wrap;
 }
 
 .ui2-action-btn {
-  width: 196px;
-  height: 40px;
-  border-radius: 20px;
+  width: clamp(190px, 18vmin, 480px);
+  height: clamp(40px, 3.8vmin, 96px);
+  border-radius: 999px;
   color: #ffffff;
   border: none;
-  font-size: 14px;
+  font-size: clamp(13px, 1.25vmin, 32px);
   font-weight: 500;
   letter-spacing: 0.3px;
   cursor: pointer;
-  padding: 0;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,5 +195,85 @@ async function handleLogout() {
 
 .ui2-action-btn:hover {
   opacity: 0.9;
+}
+
+@media (min-width: 1400px) {
+  .ui2-modal-card {
+    width: 74vw;
+    max-width: none;
+    height: 84dvh;
+    max-height: none;
+    border-radius: 2vmin;
+    padding: 3.6vmin 0 3vmin 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .ui2-modal-card {
+    height: clamp(540px, 90dvh, 780px);
+    padding: 28px 0 24px 0;
+  }
+
+  .ui2-header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sintasi-page {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .ui2-modal-card {
+    height: auto;
+    min-height: calc(100dvh - 24px);
+    border-radius: 18px;
+    padding: 20px 0 24px 0;
+  }
+
+  .ui2-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+
+  .ui2-logo-container {
+    height: 48px;
+  }
+
+  .ui2-logo {
+    max-width: 145px;
+    max-height: 48px;
+  }
+
+  .ui2-logout-btn {
+    position: static;
+    min-height: 40px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .ui2-actions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 14px;
+    margin-bottom: 16px;
+  }
+
+  .ui2-action-btn {
+    width: 100%;
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ui2-actions-row {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

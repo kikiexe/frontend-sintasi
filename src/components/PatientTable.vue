@@ -48,14 +48,18 @@ defineProps({
 /* Tabel menempel penuh dari tepi kiri ke kanan card sesuai referensi Figma. */
 .ui2-table-wrapper {
   width: 100%;
+  flex: 1;
+  min-height: 0;
   overflow-x: auto;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ui2-table {
   width: 100%;
+  min-width: 620px;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: clamp(12px, 1.15vmin, 30px);
   color: #000000;
   table-layout: fixed;
 }
@@ -63,7 +67,7 @@ defineProps({
 .ui2-table th {
   background-color: #d9d9d9;
   border: 1.5px solid #8b8b8b;
-  padding: 8px 4px;
+  padding: clamp(8px, 0.85vmin, 22px) 6px;
   font-weight: 500;
   text-align: center;
   line-height: 1.2;
@@ -72,7 +76,7 @@ defineProps({
 
 .ui2-table td {
   border: 1.5px solid #8b8b8b;
-  padding: 6px 6px;
+  padding: clamp(6px, 0.75vmin, 18px) 8px;
   background-color: #ffffff;
   line-height: 1.3;
   word-break: break-word;
