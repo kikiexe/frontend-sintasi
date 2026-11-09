@@ -1,0 +1,48 @@
+:root {
+  --sintasi-blue: #0c61cc;
+  --sintasi-blue-bg: #0461cd;
+  --sintasi-green: #45cd04;
+  --sintasi-dark-text: #574454;
+  --sintasi-gray-field: #d9d9d9;
+  --sintasi-gray-border: #8b8b8b;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #232323;
+  background-color: var(--sintasi-blue-bg);
+}
+
+.sintasi-bg {
+  background-color: var(--sintasi-blue-bg);
+  min-height: 100vh;
+}
+
+.sintasi-card {
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+
+.sintasi-input .q-field__control {
+  background-color: var(--sintasi-gray-field) !important;
+  border-radius: 8px;
+}
+
+.sintasi-input .q-field__control:before {
+  border: 1px solid #c0c0c0;
+}
+
+.btn-sintasi-green {
+  background-color: var(--sintasi-green) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: none;
+  font-size: 14px;
+}
+
+/* Hilangkan backdrop gelap bawaan Quasar agar tampilan modal sesuai referensi Figma */
+.q-dialog__backdrop {
+  background: transparent !important;
+}
